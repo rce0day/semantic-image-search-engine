@@ -4,6 +4,8 @@
 
 A high-performance, GPU-accelerated semantic image search engine built with CLIP neural networks and Qdrant vector database. This system enables both **full image matching** and **partial image matching** using sliding window techniques, optimized specifically for NVIDIA RTX GPUs.
 
+Using the Keggle cat dataset, to use the system as is please download it here - https://www.kaggle.com/datasets/crawford/cat-dataset
+
 The engine processes images into high-dimensional vector embeddings using OpenAI's CLIP model, enabling semantic similarity search based on visual content rather than metadata or filenames. The system supports millions of images with horizontal scaling capabilities.
 
 ## 🏗️ Architecture
