@@ -1,0 +1,48 @@
+from pathlib import Path
+import os
+
+BASE_DIR = Path(__file__).parent.parent
+DATA_DIR = os.environ.get("SEMANTIC_IMG_DATA_DIR", BASE_DIR / "data")
+CACHE_DIR = os.environ.get("SEMANTIC_IMG_CACHE_DIR", BASE_DIR / "cache")
+
+os.makedirs(DATA_DIR, exist_ok=True)
+os.makedirs(CACHE_DIR, exist_ok=True)
+
+EMBEDDING_MODEL = "ViT-B-32"
+EMBEDDING_DIMENSION = 512
+EMBEDDING_BATCH_SIZE = 64
+
+IMAGE_SIZE = 224
+IMAGE_MEAN = [0.48145466, 0.4578275, 0.40821073]
+IMAGE_STD = [0.26862954, 0.26130258, 0.27577711]
+
+SLIDING_WINDOW_SIZES = [(224, 224), (448, 448)]
+SLIDING_WINDOW_STRIDE = 56
+MIN_WINDOW_DIMENSION = 112
+
+QDRANT_HOST = os.environ.get("QDRANT_HOST", "localhost")
+QDRANT_PORT = int(os.environ.get("QDRANT_PORT", 6333))
+QDRANT_GRPC_PORT = int(os.environ.get("QDRANT_GRPC_PORT", 6334))
+QDRANT_API_KEY = os.environ.get("QDRANT_API_KEY", None)
+QDRANT_PREFER_GRPC = True
+QDRANT_TIMEOUT = 60.0
+
+DEFAULT_SEARCH_LIMIT = 10
+PARTIAL_MATCH_THRESHOLD = 0.5
+FULL_MATCH_THRESHOLD = 0.5
+RERANKING_ENABLED = True
+
+API_HOST = os.environ.get("API_HOST", "0.0.0.0")
+API_PORT = int(os.environ.get("API_PORT", 8000))
+API_WORKERS = int(os.environ.get("API_WORKERS", 4))
+API_MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10MB
+
+USE_GPU = True
+NUM_WORKERS = max(1, os.cpu_count() - 1)
+
+GPU_MEMORY_FRACTION = 0.85
+GPU_BATCH_SIZE = 64
+GPU_INFERENCE_BATCH_SIZE = 128
+GPU_MIXED_PRECISION = True
+
+LOG_LEVEL = os.environ.get("LOG_LEVEL", "INFO")
